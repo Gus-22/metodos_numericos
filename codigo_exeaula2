@@ -1,0 +1,31 @@
+#include <iostream> 
+#include <cmath>    
+
+using namespace std; 
+
+// Define a função para a qual queremos encontrar uma raiz
+double f(double x) {
+    return x * x - 2; // f(x) = x^2 - 2
+}
+
+// Implementa o método da bisseção para encontrar uma raiz
+double find_root(double a, double b, double epsilon) {
+    while (b - a > epsilon) { // enquanto o intervalo for maior que epsilon
+        double meio = (a + b) / 2; // calcula o ponto médio do intervalo
+        if (f(meio) > 0) { // se o valor da função no ponto médio for positivo
+            b = meio; // define o ponto direito do intervalo como o ponto médio
+        } else { // senão, se o valor da função no ponto médio for não positivo
+            a = meio; // define o ponto esquerdo do intervalo como o ponto médio
+        }
+    }
+    return (a + b) / 2; // retorna o ponto médio como a raiz aproximada
+}
+
+// A função principal
+int main() {
+    double epsilon = 1e-6; // define a precisão como 1e-6
+    double root = find_root(0, 2, epsilon); // encontra a raiz de f(x) em [0, 2]
+    cout << "Raiz aproximada: " << root << endl; // imprime a raiz aproximada
+    cout << "f(" << root << ") = " << f(root) << endl; // imprime o valor da função em f(root)
+    return 0; // retorna 0 para indicar a execução bem-sucedida
+}
