@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+//método da bissecção
+using namespace std;
+double F(double x);
+int main ()
+{ int i, j,  nmax=30;
+  double a[nmax], b[nmax], x[nmax];
+  double fa[nmax], fx[nmax],fb[nmax];
+  double ER[nmax], epsilon=0.000001;
+  a[0] = 1.2;
+  b[0] = 1.3;
+  x[0] = 0.5*(a[0]+b[0]);
+  fa[0] = F(a[0]);
+  fb[0] = F(b[0]);
+  fx[0] = F(x[0]);
+  i = 0;
+  ER[0] = 1.0;
+  while( i < nmax && ER[i] > epsilon )
+  { if (fa[i] * fx[i] > 0.0)
+    { a[i+1] = x[i];
+      b[i+1] = b[i];
+    }
+   else
+   { a[i+1] = a[i];
+     b[i+1] = x[i];
+   }
+   x[i+1] = 0.5*(a[i+1]+b[i+1]);
+   fx[i+1] = F(x[i+1]);
+   fa[i+1] = F(a[i+1]);
+   fb[i+1] = F(b[i+1]);
+   ER[i+1] = abs(x[i+1]-x[i])/abs(x[i+1]);
+   i ++;
+  }
+  cout << "k\ta\tx\tb\tf(a)\tf(x)\tf(b)\tER" << endl;
+  for (j=0; j<=i; j++)
+  { cout << setprecision(10)  << j << "\t" << a[j] << "\t" << x[j] << "\t" << b[j] << "\t" << fa[j] << "\t"
+  << fx[j] << "\t" << fb[j] << "\t" << ER[j] << endl;
+
+  }
+
+}
+double F(double x)
+
+{ return cos(9.043-3.848*x+6.257*x*x);
+}
