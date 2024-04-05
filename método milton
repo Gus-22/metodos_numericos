@@ -1,0 +1,41 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+//Método de Newton-Raphson
+using namespace std;
+
+double F(double x);
+double dF(double x);
+
+int main(){
+int i, j, nmax=20;
+double x[nmax], fx[nmax], dfx[nmax];
+double ER[nmax], epsilon=0.000001;
+
+x[0] = 1.68;
+fx[0] = F(x[0]);
+dfx[0] = dF(x[0]);
+
+i=0;
+ER[i] = 1.0;
+while ( ER[i]>epsilon && i < nmax)
+{
+x[i+1] = x[i] - fx[i]/dfx[i];
+fx[i+1] = F(x[i+1]);
+dfx[i+1] = dF(x[i+1]);
+ER[i+1] = abs(x[i+1] - x[i])/abs(x[i+1]);
+i++;
+}
+cout << "i\t\tx[i]\t\t\t\tfx[i]\t\t\t\tdfx[i]\t\t\t\tER[i]" << endl;
+for (j=0; j<=i; j++){
+cout << setprecision(10) << j << "\t\t" << x[j] << "\t\t" << fx[j] << "\t\t" << dfx[j] << "\t\t" << ER[j] << endl;
+}
+
+}
+
+double F(double x){
+return cos(9.043-3.848*x+6.257*x*x) ;
+}
+double dF (double x){
+return -sin(9.043-3.848*x+6.257*x*x)*(12.514*x-3.848);
+}
