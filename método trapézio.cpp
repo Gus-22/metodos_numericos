@@ -48,5 +48,8 @@ int main ()
 }
 
 double f(double x)
-{ return sin(3.003*x*x) + sin(6.974*x)*sin(6.974*x);
+{ 
+    double aux, pi = 3.14159265359;
+    aux = pi*x;
+    return 2*exp(-x*x) + 4.0 +sin(2.0*aux) + sin(3.0*aux) + cos(4.0*aux);
 }
