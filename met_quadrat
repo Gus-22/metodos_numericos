@@ -1,0 +1,59 @@
+
+#include <iostream>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+   int N = 10, i = 0;
+   double x[N], y[N], x2[N], yx[N], a0, a1;
+   double sx = 0.0, sx2 = 0.0, sy = 0.0, syx = 0.0;
+
+   x[0] = 1.0; y[0] = 3.54;
+   x[1] = 2.0; y[1] = 5.72;
+   x[2] = 3.0; y[2] = 6.35;
+   x[3] = 4.0; y[3] = 8.6;
+   x[4] = 5.0; y[4] = 10.82;
+   x[5] = 6.0; y[5] = 12.34;
+   x[6] = 7.0; y[6] = 15.37;
+   x[7] = 8.0; y[7] = 17.28;
+   x[8] = 9.0; y[8] = 18.37;
+   x[9] = 10.0; y[9] = 21.42;
+
+   for(i=0 ; i<N; i++ )
+    {
+    x2[i] = x[i]*x[i];
+    yx[i] = x[i]*y[i];
+    }
+    for (i=0 ; i<N ; i++)
+    {
+    sx = sx + x[i];
+    sx2 = sx2 + x2[i];
+    sy = sy + y[i];
+    syx = syx + yx[i];
+    }
+
+
+    a0 = (sx2*sy-syx*sx)/(N*sx2-sx*sx);
+    a1 = (N*syx-sx*sy)/(N*sx2-sx*sx);
+
+    cout << "x\t\ty\tx2\t\tyx" << endl;
+    for(i=0;i<N; i++)
+    {
+    cout << x[i] << "\t\t" << y[i] << "\t\t" << x2[i] << "\t\t" << x2[i] << "\t\t" << yx[i] << endl;
+    }
+
+    cout << "-----------------------------------------------------------------------\n";
+    cout << sx << "\t\t" << sy << "\t\t" << sx2 << "\t\t" << syx << endl;
+
+     cout << "-----------------------------------------------------------------------\n";
+    cout << "a0 = " << a0 <<  "\t\ta1 = " << a1 <<endl;
+
+
+
+
+
+
+}
