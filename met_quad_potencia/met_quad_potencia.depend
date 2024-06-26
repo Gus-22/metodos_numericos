@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1719425191 source:c:\users\visitante\documents\camille\met_quad_potencia\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+

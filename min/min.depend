@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1719426210 source:c:\users\visitante\documents\camille\min\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+

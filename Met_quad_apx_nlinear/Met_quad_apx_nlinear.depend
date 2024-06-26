@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1719424708 source:c:\users\visitante\documents\camille\met_quad_apx_nlinear\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+
